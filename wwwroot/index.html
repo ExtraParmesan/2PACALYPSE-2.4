@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>2PACALYPSE 2.4</title>
+        <link rel="stylesheet" href="assets/main.css" />
+    </head>
+    <body>
+        <div id="overlay">
+            <div id="flash-text"></div>
+        </div>
+        <div class="container">
+            <div class="header">
+                <span class="title">2PACALYPSE 2.4</span>
+                <span class="coded-by">-Coded by Moneymack</span>
+            </div>
+            <div class="main-content">
+                <div class="info">
+                    <p>IP: <input type="text" class="ip" /></p>
+                    <p>Port: <input type="text" class="port" /></p>
+                </div>
+                <div class="rip-text">
+                    r.i.p 2pac u were the meanin of lyfe -moneymack
+                </div>
+                <button class="ddos-button" onclick="validateAndSend()">
+                    DDoS NIGGAS
+                </button>
+                <div class="botnets">Botnets Online: 49</div>
+            </div>
+        </div>
+        <script>
+            const overlay = document.getElementById("overlay");
+            const flashText = document.getElementById("flash-text");
+
+            function showFlashMessage(message) {
+                flashText.textContent = message;
+                overlay.style.display = "flex";
+            }
+
+            overlay.addEventListener("click", () => {
+                overlay.style.display = "none";
+            });
+
+            function validateAndSend() {
+                const ipInput = document.querySelector(".ip");
+                const ip = ipInput.value;
+
+                const ipv4Regex =
+                    /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
+                const ipv6Regex =
+                    /^(?:(?:[a-fA-F0-9]{1,4}:){7}[a-fA-F0-9]{1,4}|(?:[a-fA-F0-9]{1,4}:){1,7}:|(?:[a-fA-F0-9]{1,4}:){1,6}:[a-fA-F0-9]{1,4}|(?:[a-fA-F0-9]{1,4}:){1,5}(?::[a-fA-F0-9]{1,4}){1,2}|(?:[a-fA-F0-9]{1,4}:){1,4}(?::[a-fA-F0-9]{1,4}){1,3}|(?:[a-fA-F0-9]{1,4}:){1,3}(?::[a-fA-F0-9]{1,4}){1,4}|(?:[a-fA-F0-9]{1,4}:){1,2}(?::[a-fA-F0-9]{1,4}){1,5}|[a-fA-F0-9]{1,4}:(?:(?::[a-fA-F0-9]{1,4}){1,6})|:(?:(?::[a-fA-F0-9]{1,4}){1,7}|:)|fe80:(?::[a-fA-F0-9]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(?:ffff(?::0{1,4}){0,1}:){0,1}(?:(?:25[0-5]|(?:2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(?:25[0-5]|(?:2[0-4]|1{0,1}[0-9]){0,1}[0-9])|(?:[a-fA-F0-9]{1,4}:){1,4}:(?:(?:25[0-5]|(?:2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(?:25[0-5]|(?:2[0-4]|1{0,1}[0-9]){0,1}[0-9]))$/;
+
+                if (!ipv4Regex.test(ip)) {
+                    showFlashMessage("yoyo chill invalid ip homie");
+                    return;
+                }
+
+                sendAttack();
+            }
+
+            function sendAttack() {
+                const ip = document.querySelector(".ip").value;
+                const port = document.querySelector(".port").value;
+
+                const message = JSON.stringify({ ip: ip, port: port });
+
+                window.external.sendMessage(message);
+            }
+
+            window.external.receiveMessage((message) => {
+                showFlashMessage(message);
+            });
+        </script>
+    </body>
+</html>
