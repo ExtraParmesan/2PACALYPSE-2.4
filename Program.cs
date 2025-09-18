@@ -34,7 +34,7 @@ namespace pacalypse
             // Start playing
             _mediaPlayer.Play();
 
-            // --- Window Setup ---
+            // Windows
             string windowTitle = "2PACALYPSE 2.4";
 
             var window = new PhotinoWindow()
@@ -77,3 +77,4 @@ namespace pacalypse
         public string? port { get; set; }
     }
 }
+
